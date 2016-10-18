@@ -200,6 +200,22 @@ grid3 = EmbeddedGraph(9, [(0,1), (1,2), (3,4), (4,5), (6,7), (7,8),
                        (-1, -1), (0, 0), (1, 1),
                        (0, -2), (1, -1), (2, 0)])
 
+# a 3-d cube projected to the plane
+cube = EmbeddedGraph(8, [(0,1), (2,3), (4,5), (6,7),
+                         (0,2), (1,3), (4,6), (5,7),
+                         (0,4), (1,5), (2,6), (3,7)],
+                     [(x*0.5+z*8**-0.5, y*0.5-z*8**-0.5) for x in [1,-1] for y in [1,-1] for z in [1,-1]])
+
+# the Peterson graph
+peterson = EmbeddedGraph(
+    10,
+    [(0,2), (2,4), (4,1), (1,3), (3,0),
+     (5,6), (6,7), (7,8), (8,9), (9,5),
+     (0,5), (1,6), (2,7), (3,8), (4,9)],
+    [(math.cos(i*math.pi*0.4)*0.5257, math.sin(i*math.pi*0.4)*0.5257) for i in range(5)] +
+    [(math.cos((i+1.25)*math.pi*0.4)*0.8507, math.sin((i+1.25)*math.pi*0.4)*0.8507) for i in range(5)]
+)
+
 # the McGee graph, has nice symmetrical animation by Greg Egan elsewhere
 circle_in = [(math.cos(i*math.pi*0.25)*0.5, math.sin(i*math.pi*0.25)*0.5) for i in range(8)]
 x1, y1, x2, y2 = 1.35286334, 0.31641005, 0.99317177, 0.61666121
